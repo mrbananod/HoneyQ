@@ -1,41 +1,40 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: #fff8e1;
-  color: #333;
-}
-
-.container {
+  background-color: #000;
+  color: #fff;
   display: flex;
   height: 100vh;
 }
 
-/* Sidebar */
 .sidebar {
-  width: 250px;
-  background: linear-gradient(to bottom, #f8b500, #fceabb);
-  color: white;
+  width: 280px;
+  background-color: #111;
   padding: 1.5rem;
-  box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.sidebar h2 {
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
   margin-bottom: 2rem;
-  font-size: 1.5rem;
+  color: #fff;
 }
 
-.sidebar ul {
+.menu, .info {
   list-style: none;
   padding: 0;
 }
 
-.sidebar li {
+.menu li, .info li {
   margin-bottom: 1rem;
 }
 
-.sidebar a {
+.menu a, .info a {
+  color: #fff;
   text-decoration: none;
-  color: white;
   font-weight: bold;
   display: block;
   padding: 0.5rem;
@@ -43,42 +42,46 @@ body {
   transition: background 0.3s ease;
 }
 
-.sidebar a:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+.menu a:hover, .info a:hover {
+  background-color: #333;
 }
 
-/* Content */
+.login-btn {
+  background-color: #fff;
+  color: #000;
+  font-weight: bold;
+  padding: 0.7rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.login-btn:hover {
+  background-color: #f8b500;
+  color: #fff;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #333;
+  margin: 1rem 0;
+}
+
+.store-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.store-buttons img {
+  width: 100%;
+  max-width: 200px;
+}
+
 .content {
   flex: 1;
   padding: 2rem;
-  background: #fffdf5;
-  overflow-y: auto;
-}
-
-header {
-  margin-bottom: 2rem;
-}
-
-.card {
-  background-color: white;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  max-width: 600px;
-}
-
-button {
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  background-color: #f8b500;
-  border: none;
-  border-radius: 6px;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #d99800;
+  background-color: #000;
 }
