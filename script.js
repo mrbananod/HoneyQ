@@ -1,23 +1,92 @@
-// Guardar personaje en localStorage
-document.getElementById("personajeForm")?.addEventListener("submit", function(e) {
-  e.preventDefault();
-  const datos = Object.fromEntries(new FormData(e.target));
-  localStorage.setItem("personaje", JSON.stringify(datos));
-  window.location.href = "chat.html";
-});
+document.addEventListener("DOMContentLoaded", () => {
+  const links = document.querySelectorAll("[data-section]");
+  const content = document.querySelector(".content");
 
-// Simular chat
-document.getElementById("chatForm")?.addEventListener("submit", function(e) {
-  e.preventDefault();
-  const input = document.getElementById("userInput").value;
-  const chatBox = document.getElementById("chatBox");
-  const personaje = JSON.parse(localStorage.getItem("personaje"));
-  
-  chatBox.innerHTML += `<p><strong>Tú:</strong> ${input}</p>`;
-  chatBox.innerHTML += `<p><strong>${personaje.nombre}:</strong> ${responderComoPersonaje(input, personaje)}</p>`;
-  document.getElementById("userInput").value = "";
-});
+  const sections = {
+    home: `
+      <h1>🏠 Hogar</h1>
+      <p>Bienvenido a HoneyQ. Aquí puedes explorar todo lo que ofrecemos.</p>
+    `,
+    chat: `
+      <h1>💬 Chat</h1>
+      <p>Inicia una conversación con tus personajes favoritos.</p>
+    `,
+    characters: `
+      <h1>🧍 Mis personajes</h1>
+      <p>Administra y personaliza tus personajes aquí.</p>
+    `,
+    create: `
+      <h1>➕ Crear chatbots</h1>
+      <p>Diseña tu propio chatbot con personalidad única.</p>
+    `,
+    mybots: `
+      <h1>📁 Mis chatbots</h1>
+      <p>Consulta y edita tus chatbots guardados.</p>
+    `,
+    favorites: `
+      <h1>⭐ Favoritos</h1>
+      <p>Estos son tus personajes y chats favoritos.</p>
+    `,
+    recommend: `
+      <h1>🎯 Recomendaciones</h1>
+      <p>Explora personajes y chats recomendados para ti.</p>
+    `,
+    terms: `
+      <h1>🎮 Letra chica</h1>
+      <p>Información legal y condiciones de uso.</p>
+    `,
+    privacy: `
+      <h1>☠️ Privacidad</h1>
+      <p>Tu privacidad es importante. Aquí están nuestras políticas.</p>
+    `,
+    refunds: `
+      <h1>😊 Reembolsos</h1>
+      <p>Consulta nuestra política de reembolsos.</p>
+    `,
+    reports: `
+      <h1>📊 Informes</h1>
+      <p>Estadísticas y reportes de uso.</p>
+    `,
+    guidelines: `
+      <h1>📋 Directrices</h1>
+      <p>Normas para usar la plataforma correctamente.</p>
+    `,
+    support: `
+      <h1>🆘 Apoyo</h1>
+      <p>¿Necesitas ayuda? Estamos aquí para ti.</p>
+    `,
+    affiliates: `
+      <h1>🤝 Afiliados</h1>
+      <p>Conviértete en parte de nuestro programa de afiliados.</p>
+    `
+  };
 
-function responderComoPersonaje(mensaje, personaje) {
-  return `Hmm... eso suena interesante. Como ${personaje.personalidad}, yo diría que...`;
+  links.forEach(link => {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+      const section = link.getAttribute("data-section");
+
+      // Animación de desvanecimiento
+      content.classList.add("fade-out");
+
+      setTimeout(() => {
+        content.innerHTML = sections[section] || "<h1>Sección no encontrada</h1>";
+        content.classList.remove("fade-out");
+        content.classList.add("fade-in");
+
+        setTimeout(() => {
+          content.classList.remove("fade-in");
+        }, 300);
+      }, 300);
+    });
+  });
+});
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.fade-in {
+  opacity: 1;
+  transition: opacity 0.3s ease;
 }
