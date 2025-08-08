@@ -96,56 +96,41 @@ body {
   cursor: pointer;
 }
 
-/* Search bar */
-.search-bar {
-  display: flex;
-  margin-bottom: 2rem;
+/* Registro */
+.register-section {
+  background-color: #1a1a1a;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 400px;
+  margin: 2rem auto;
+  text-align: center;
 }
 
-.search-bar input {
-  flex: 1;
+.register-section h2 {
+  margin-bottom: 1rem;
+}
+
+#registerForm input {
+  width: 100%;
   padding: 0.7rem;
+  margin-bottom: 1rem;
   border: none;
-  border-radius: 6px 0 0 6px;
+  border-radius: 6px;
   background-color: #222;
   color: #fff;
 }
 
-.search-bar button {
-  padding: 0.7rem;
-  border: none;
-  border-radius: 0 6px 6px 0;
+#registerForm button {
   background-color: #f8b500;
   color: #000;
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-radius: 6px;
   font-weight: bold;
   cursor: pointer;
 }
 
-/* Cards */
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 1rem;
-}
-
-.card {
-  background-color: #1a1a1a;
-  padding: 1rem;
-  border-radius: 8px;
-  text-align: center;
-}
-
-.card img {
-  width: 100%;
-  border-radius: 6px;
-  margin-bottom: 0.5rem;
-}
-
-.card h3 {
-  margin: 0.5rem 0 0.2rem;
-}
-
-.card p {
-  font-size: 0.9rem;
-  color: #aaa;
+#registerMessage {
+  margin-top: 1rem;
+  color: #f8b500;
 }
