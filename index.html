@@ -47,39 +47,19 @@
         </div>
       </section>
 
-      <section class="search-bar">
-        <input type="text" placeholder="Sumérgete en un sinfín de fantasías...">
-        <button>🔍</button>
-      </section>
-
-      <section class="cards">
-        <div class="card">
-          <img src="https://i.imgur.com/8Qf3ZzU.jpg" alt="Mateo">
-          <h3>Mateo De Vico</h3>
-          <p>@Shileynaa</p>
-        </div>
-        <div class="card">
-          <img src="https://i.imgur.com/2Qf3ZzU.jpg" alt="Aimi">
-          <h3>Aimi Fujisawa</h3>
-          <p>@Henus</p>
-        </div>
-        <div class="card">
-          <img src="https://i.imgur.com/3Qf3ZzU.jpg" alt="Damien">
-          <h3>Damien Wolfe</h3>
-          <p>@SATO2323</p>
-        </div>
-        <div class="card">
-          <img src="https://i.imgur.com/4Qf3ZzU.jpg" alt="Aarón">
-          <h3>Aarón</h3>
-          <p>@sainz123</p>
-        </div>
-        <div class="card">
-          <img src="https://i.imgur.com/5Qf3ZzU.jpg" alt="Sophie">
-          <h3>Sophie</h3>
-          <p>@yxnoq</p>
-        </div>
+      <section class="register-section">
+        <h2>Regístrate gratis</h2>
+        <form id="registerForm">
+          <input type="text" id="name" placeholder="Nombre completo" required>
+          <input type="email" id="email" placeholder="Correo electrónico" required>
+          <input type="password" id="password" placeholder="Contraseña" required>
+          <button type="submit">Registrarse</button>
+          <p id="registerMessage"></p>
+        </form>
       </section>
     </main>
   </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
