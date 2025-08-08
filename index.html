@@ -2,59 +2,29 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HoneyQ</title>
+  <title>HoneyQ - Registro e Inicio</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js"></script>
 </head>
 <body>
   <div class="container">
-    <aside class="sidebar">
-      <div class="logo">🍯 HoneyQ</div>
-      <nav>
-        <a href="#">🏠 Hogar</a>
-        <a href="#">💬 Chats</a>
-        <a href="#">🧍 Mis personajes</a>
-        <hr>
-        <a href="#">➕ Crear chatbot</a>
-        <a href="#">📁 Mis chatbots</a>
-        <a href="#">⭐ Favoritos</a>
-        <a href="#">🎯 Recomendaciones</a>
-        <button class="login-btn">Inicia sesión ➡️</button>
-        <hr>
-        <a href="#">🎮 Letra chica</a>
-        <a href="#">☠️ Privacidad</a>
-        <a href="#">😊 Reembolsos</a>
-        <a href="#">📊 Informes</a>
-        <a href="#">📋 Directrices</a>
-        <a href="#">🆘 Apoyo</a>
-        <a href="#">🤝 Afiliados</a>
-        <div class="store-buttons">
-          <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play">
-        </div>
-      </nav>
-    </aside>
-
     <main class="main-content">
-      <section class="banner">
-        <div class="banner-text">
-          <h1>Únete a la plataforma de rol de IA #1</h1>
-          <p>Crea tu cuenta gratuita y accede a miles de personajes, historias y mundos personalizados.</p>
-          <button class="cta-btn">Crear cuenta gratuita</button>
-        </div>
-        <div class="banner-image">
-          <img src="https://i.imgur.com/1ZQZ1ZL.png" alt="Personaje anime">
-        </div>
-      </section>
-
-      <section class="register-section">
-        <h2>Regístrate gratis</h2>
+      <section class="auth-section">
+        <h2>Crear cuenta</h2>
         <form id="registerForm">
-          <input type="text" id="name" placeholder="Nombre completo" required>
-          <input type="email" id="email" placeholder="Correo electrónico" required>
-          <input type="password" id="password" placeholder="Contraseña" required>
+          <input type="email" id="regEmail" placeholder="Correo electrónico" required>
+          <input type="password" id="regPassword" placeholder="Contraseña" required>
           <button type="submit">Registrarse</button>
           <p id="registerMessage"></p>
+        </form>
+
+        <h2>Iniciar sesión</h2>
+        <form id="loginForm">
+          <input type="email" id="loginEmail" placeholder="Correo electrónico" required>
+          <input type="password" id="loginPassword" placeholder="Contraseña" required>
+          <button type="submit">Entrar</button>
+          <p id="loginMessage"></p>
         </form>
       </section>
     </main>
