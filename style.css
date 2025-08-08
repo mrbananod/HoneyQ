@@ -1,66 +1,151 @@
-/* Reset básico */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Fondo general */
 body {
+  margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background-color: #f4f4f4;
-  color: #333;
-  line-height: 1.6;
-  padding: 20px;
+  background-color: #0d0d0d;
+  color: #fff;
 }
 
-/* Navegación */
-nav {
+.container {
   display: flex;
-  gap: 15px;
-  margin-bottom: 20px;
+  height: 100vh;
 }
 
-nav a {
-  text-decoration: none;
-  color: #0078d4;
+/* Sidebar */
+.sidebar {
+  width: 280px;
+  background-color: #111;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 1.8rem;
   font-weight: bold;
-  padding: 8px 12px;
-  border-radius: 4px;
-  transition: background-color 0.2s ease;
+  margin-bottom: 2rem;
 }
 
-nav a:hover {
-  background-color: #e0e0e0;
+.sidebar nav a {
+  display: block;
+  color: #ccc;
+  text-decoration: none;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  padding: 0.5rem;
+  border-radius: 6px;
+  transition: background 0.3s ease;
 }
 
-/* Contenedor de contenido dinámico */
-.content {
+.sidebar nav a:hover {
+  background-color: #333;
+}
+
+.login-btn {
   background-color: #fff;
-  padding: 20px;
+  color: #000;
+  font-weight: bold;
+  padding: 0.7rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.store-buttons img {
+  width: 100%;
+  max-width: 200px;
+  margin-top: 1rem;
+}
+
+/* Main content */
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+/* Banner */
+.banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to right, #2c2c3c, #1a1a2e);
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+.banner-text h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.banner-text p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.cta-btn {
+  background-color: #f8b500;
+  color: #000;
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Search bar */
+.search-bar {
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 0.7rem;
+  border: none;
+  border-radius: 6px 0 0 6px;
+  background-color: #222;
+  color: #fff;
+}
+
+.search-bar button {
+  padding: 0.7rem;
+  border: none;
+  border-radius: 0 6px 6px 0;
+  background-color: #f8b500;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  background-color: #1a1a1a;
+  padding: 1rem;
   border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  opacity: 1;
-  transition: opacity 0.3s ease;
-  min-height: 200px;
+  text-align: center;
 }
 
-/* Animaciones */
-.fade-out {
-  opacity: 0;
+.card img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
 }
 
-.fade-in {
-  opacity: 1;
+.card h3 {
+  margin: 0.5rem 0 0.2rem;
 }
 
-/* Títulos */
-.content h1 {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-/* Párrafos */
-.content p {
-  font-size: 16px;
+.card p {
+  font-size: 0.9rem;
+  color: #aaa;
 }
