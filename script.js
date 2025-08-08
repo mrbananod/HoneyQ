@@ -81,12 +81,3 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
-.fade-out {
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.fade-in {
-  opacity: 1;
-  transition: opacity 0.3s ease;
-}
