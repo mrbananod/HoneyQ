@@ -7,22 +7,35 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>HoneyQ 🍯</h1>
-    <p>Tu página ya está funcionando</p>
-  </header>
+  <div class="container">
+    <nav class="sidebar">
+      <h2>🍯 HoneyQ</h2>
+      <ul>
+        <li><a href="#">🏠 Hogar</a></li>
+        <li><a href="#">💬 Chat</a></li>
+        <li><a href="#">🧍 Mis personajes</a></li>
+        <li><a href="#">🤖 Crear chatbots</a></li>
+        <li><a href="#">📁 Mis chatbots</a></li>
+        <li><a href="#">⭐ Favoritos</a></li>
+        <li><a href="#">🎯 Recomendaciones</a></li>
+        <li><a href="#">🏆 Clasificaciones</a></li>
+        <li><a href="#">❓ Ayuda</a></li>
+      </ul>
+    </nav>
 
-  <main>
-    <section class="card">
-      <h2>¡Hola, mundo!</h2>
-      <p>Bienvenido a tu sitio web en GitHub Pages.</p>
-      <button onclick="saludar()">Haz clic aquí</button>
-    </section>
-  </main>
+    <main class="content">
+      <header>
+        <h1>Bienvenido a HoneyQ</h1>
+        <p>Tu espacio para crear y explorar chatbots</p>
+      </header>
 
-  <footer>
-    <p>Creado por Diego · 2025</p>
-  </footer>
+      <section class="card">
+        <h2>¡Hola, mundo!</h2>
+        <p>Selecciona una opción del panel izquierdo para comenzar.</p>
+        <button onclick="saludar()">Haz clic aquí</button>
+      </section>
+    </main>
+  </div>
 
   <script>
     function saludar() {
