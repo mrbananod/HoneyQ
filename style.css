@@ -1,30 +1,62 @@
-* {
+body {
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+  background: #fff8e1;
+  color: #333;
 }
 
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to right, #fceabb, #f8b500);
-  color: #333;
+.container {
   display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background: linear-gradient(to bottom, #f8b500, #fceabb);
+  color: white;
+  padding: 1.5rem;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+}
+
+.sidebar h2 {
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 1rem;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  display: block;
+  padding: 0.5rem;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.sidebar a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Content */
+.content {
+  flex: 1;
+  padding: 2rem;
+  background: #fffdf5;
+  overflow-y: auto;
 }
 
 header {
-  text-align: center;
-  padding: 2rem;
-  background-color: rgba(255, 255, 255, 0.8);
-}
-
-main {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
+  margin-bottom: 2rem;
 }
 
 .card {
@@ -32,8 +64,7 @@ main {
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  text-align: center;
-  max-width: 400px;
+  max-width: 600px;
 }
 
 button {
@@ -50,11 +81,4 @@ button {
 
 button:hover {
   background-color: #d99800;
-}
-
-footer {
-  text-align: center;
-  padding: 1rem;
-  background-color: rgba(255, 255, 255, 0.8);
-  font-size: 0.9rem;
 }
