@@ -1,0 +1,30 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #1e1e2f;
+  color: #f0f0f0;
+  padding: 20px;
+}
+h1, h2 {
+  color: #ffcc70;
+}
+input, textarea, button {
+  display: block;
+  margin: 10px 0;
+  padding: 10px;
+  width: 100%;
+  max-width: 500px;
+}
+.btn {
+  background-color: #ffcc70;
+  color: #1e1e2f;
+  padding: 10px 20px;
+  text-decoration: none;
+  margin-right: 10px;
+}
+#chatBox {
+  border: 1px solid #444;
+  padding: 10px;
+  height: 300px;
+  overflow-y: scroll;
+  margin-bottom: 10px;
+}
