@@ -1,58 +1,57 @@
-<!-- Incluye Firebase SDK en tu HTML -->
-<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js"></script>
+// =====================
+// Mostrar / ocultar panel de autenticación
+// =====================
+const showAuthBtn = document.getElementById("showAuthPanel");
+const closeAuthBtn = document.getElementById("closeAuthPanel");
+const authPanel = document.getElementById("authPanel");
 
-<script>
-  // Configuración de Firebase
-  const firebaseConfig = {
-    apiKey: "AIzaSyDQv_NLKcXX91FJWnJ2iAMSfaAOB9LPZsc",
-    authDomain: "honeyq-26edf.firebaseapp.com",
-    projectId: "honeyq-26edf",
-    storageBucket: "honeyq-26edf.appspot.com",
-    messagingSenderId: "582100400487",
-    appId: "1:582100400487:web:bcc5d3df0570b98b9097c2"
-  };
+showAuthBtn.addEventListener("click", () => {
+  authPanel.style.display = "block";
+});
 
-  // Inicializar Firebase
-  firebase.initializeApp(firebaseConfig);
-  const auth = firebase.auth();
-  const db = firebase.firestore();
+closeAuthBtn.addEventListener("click", () => {
+  authPanel.style.display = "none";
+});
 
-  // Registro de usuario
-  async function register(email, password, name) {
-    try {
-      const userCredential = await auth.createUserWithEmailAndPassword(email, password);
-      const user = userCredential.user;
+// =====================
+// Registro de usuario en localStorage
+// =====================
+const registerForm = document.getElementById("registerForm");
+registerForm.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-      // Guardar nombre en Firestore
-      await db.collection("users").doc(user.uid).set({ name });
+  const email = document.getElementById("regEmail").value;
+  const password = document.getElementById("regPassword").value;
 
-      alert("Usuario registrado con éxito");
-    } catch (error) {
-      alert("Error al registrar: " + error.message);
-    }
+  if (email && password) {
+    // Guardar usuario en localStorage
+    const userData = { email, password };
+    localStorage.setItem("user", JSON.stringify(userData));
+
+    document.getElementById("registerMessage").textContent = "Usuario registrado con éxito";
+    registerForm.reset();
+  } else {
+    document.getElementById("registerMessage").textContent = "Por favor completa todos los campos";
   }
+});
 
-  // Inicio de sesión
-  async function login(email, password) {
-    try {
-      const userCredential = await auth.signInWithEmailAndPassword(email, password);
-      const user = userCredential.user;
+// =====================
+// Inicio de sesión en localStorage
+// =====================
+const loginForm = document.getElementById("loginForm");
+loginForm.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-      const doc = await db.collection("users").doc(user.uid).get();
-      const name = doc.exists ? doc.data().name : "Usuario";
+  const email = document.getElementById("loginEmail").value;
+  const password = document.getElementById("loginPassword").value;
 
-      alert("Bienvenido, " + name);
-    } catch (error) {
-      alert("Error al iniciar sesión: " + error.message);
-    }
+  const savedUser = JSON.parse(localStorage.getItem("user"));
+
+  if (savedUser && savedUser.email === email && savedUser.password === password) {
+    document.getElementById("loginMessage").textContent = "Inicio de sesión exitoso. Bienvenido!";
+    loginForm.reset();
+    authPanel.style.display = "none";
+  } else {
+    document.getElementById("loginMessage").textContent = "Usuario o contraseña incorrectos";
   }
-
-  // Cierre de sesión
-  function logout() {
-    auth.signOut().then(() => {
-      alert("Sesión cerrada");
-    });
-  }
-</script>
+});
