@@ -1,63 +1,22 @@
-// =====================
-// Mostrar / ocultar panel de autenticación
-// =====================
-const showAuthBtn = document.getElementById("showAuthPanel");
-const closeAuthBtn = document.getElementById("closeAuthPanel");
-const authPanel = document.getElementById("authPanel");
+// Abrir/cerrar sidebar
+const menuBtn = document.getElementById("menuBtn");
+const sidebar = document.getElementById("sidebar");
 
-showAuthBtn.addEventListener("click", () => {
-  authPanel.style.display = "block";
+menuBtn.addEventListener("click", () => {
+  sidebar.classList.toggle("active");
 });
 
-closeAuthBtn.addEventListener("click", () => {
-  authPanel.style.display = "none";
+// Cerrar sesión
+document.getElementById("logoutBtn").addEventListener("click", () => {
+  localStorage.removeItem("user");
+  window.location.href = "index.html";
 });
 
-// =====================
-// Registro de usuario en localStorage
-// =====================
-const registerForm = document.getElementById("registerForm");
-registerForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  const email = document.getElementById("regEmail").value;
-  const password = document.getElementById("regPassword").value;
-
-  if (email && password) {
-    // Guardar usuario en localStorage
-    const userData = { email, password };
-    localStorage.setItem("user", JSON.stringify(userData));
-
-    document.getElementById("registerMessage").textContent = "Usuario registrado con éxito";
-    registerForm.reset();
-  } else {
-    document.getElementById("registerMessage").textContent = "Por favor completa todos los campos";
+// Verificación de sesión
+window.addEventListener("load", () => {
+  const user = localStorage.getItem("user");
+  if (!user) {
+    window.location.href = "index.html";
   }
 });
 
-// =====================
-// Inicio de sesión en localStorage
-// =====================
-const loginForm = document.getElementById("loginForm");
-loginForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  const email = document.getElementById("loginEmail").value;
-  const password = document.getElementById("loginPassword").value;
-
-  const savedUser = JSON.parse(localStorage.getItem("user"));
-
-  if (savedUser && savedUser.email === email && savedUser.password === password) {
-    document.getElementById("loginMessage").textContent = "Inicio de sesión exitoso. Bienvenido!";
-    loginForm.reset();
-    authPanel.style.display = "none";
-
-    // Redirección a página principal
-    setTimeout(() => {
-      window.location.href = "principal.html"; // Cambia por la ruta real si está en otra carpeta
-    }, 1000);
-
-  } else {
-    document.getElementById("loginMessage").textContent = "Usuario o contraseña incorrectos";
-  }
-});
