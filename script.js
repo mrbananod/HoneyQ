@@ -51,6 +51,12 @@ loginForm.addEventListener("submit", (e) => {
     document.getElementById("loginMessage").textContent = "Inicio de sesión exitoso. Bienvenido!";
     loginForm.reset();
     authPanel.style.display = "none";
+
+    // Redirección a página principal
+    setTimeout(() => {
+      window.location.href = "principal.html"; // Cambia por la ruta real si está en otra carpeta
+    }, 1000);
+
   } else {
     document.getElementById("loginMessage").textContent = "Usuario o contraseña incorrectos";
   }
