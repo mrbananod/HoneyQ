@@ -1,56 +1,39 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>HoneyQ - Página Principal</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    .main-container {
-      text-align: center;
-      padding: 2rem;
-    }
-    .welcome {
-      font-size: 1.5rem;
-      margin-bottom: 1.5rem;
-      color: #f8b500;
-    }
-    .logout-btn {
-      background: #ff4d4d;
-      color: white;
-      padding: 0.8rem 1.5rem;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .logout-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 10px rgba(255, 77, 77, 0.8);
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HoneyQ - Principal</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="main-container">
-    <h1>🍯 HoneyQ</h1>
-    <p class="welcome" id="welcomeMessage">Bienvenido, Usuario</p>
-    <button class="logout-btn" id="logoutBtn">Cerrar sesión</button>
+
+  <!-- Botón de menú -->
+  <div id="menuBtn" class="menu-btn">☰</div>
+
+  <!-- Sidebar -->
+  <nav id="sidebar" class="sidebar">
+    <h2 class="logo">🍯 HoneyQ</h2>
+    <ul>
+      <li><a href="#">🏠 Hogar</a></li>
+      <li><a href="#">💬 Chats</a></li>
+      <li><a href="#">🧍 Mis Personas</a></li>
+    </ul>
+    <h3>Chatbots</h3>
+    <ul>
+      <li><a href="#">➕ Crear Chatbot</a></li>
+      <li><a href="#">📂 Mis Chatbots</a></li>
+      <li><a href="#">❤️ Favoritos</a></li>
+    </ul>
+    <button id="logoutBtn" class="logout-btn">⏻ Cerrar sesión</button>
+  </nav>
+
+  <!-- Contenido principal -->
+  <div class="content">
+    <h1>Bienvenido a HoneyQ</h1>
+    <p>Tu página principal con panel lateral plegable y estilo negro + miel.</p>
   </div>
 
-  <script>
-    // Mostrar nombre del usuario si está guardado
-    const savedUser = JSON.parse(localStorage.getItem("user"));
-    if (savedUser && savedUser.email) {
-      document.getElementById("welcomeMessage").textContent = `Bienvenido, ${savedUser.email}`;
-    } else {
-      window.location.href = "index.html"; // Si no hay usuario, redirigir al inicio
-    }
-
-    // Cerrar sesión
-    document.getElementById("logoutBtn").addEventListener("click", () => {
-      localStorage.removeItem("user");
-      window.location.href = "index.html";
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
