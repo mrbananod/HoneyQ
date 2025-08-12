@@ -4,13 +4,16 @@
   <meta charset="UTF-8">
   <title>HoneyQ - Registro e Inicio</title>
   <link rel="stylesheet" href="style.css">
-  <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js"></script>
 </head>
 <body>
   <div class="container">
     <main class="main-content">
-      <section class="auth-section">
+
+      <!-- Botón para mostrar panel -->
+      <button id="showAuthPanel">Iniciar sesión / Registrarse</button>
+
+      <!-- Panel oculto -->
+      <section class="auth-section" id="authPanel" style="display: none;">
         <h2>Crear cuenta</h2>
         <form id="registerForm">
           <input type="email" id="regEmail" placeholder="Correo electrónico" required>
@@ -26,6 +29,9 @@
           <button type="submit">Entrar</button>
           <p id="loginMessage"></p>
         </form>
+
+        <!-- Botón para cerrar panel -->
+        <button id="closeAuthPanel">Cerrar</button>
       </section>
     </main>
   </div>
