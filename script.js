@@ -19,4 +19,3 @@ window.addEventListener("load", () => {
     window.location.href = "index.html";
   }
 });
-
