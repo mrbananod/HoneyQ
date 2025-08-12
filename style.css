@@ -1,10 +1,12 @@
+/* ===== RESET Y BASE ===== */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background-color: #0d0d0d;
+  background-color: #0d0d0d; /* Fondo principal oscuro */
   color: #fff;
 }
 
+/* Contenedor centrado */
 .container {
   display: flex;
   justify-content: center;
@@ -12,28 +14,55 @@ body {
   height: 100vh;
 }
 
+/* Contenido principal */
 .main-content {
   width: 100%;
   max-width: 500px;
   padding: 2rem;
-}
-
-.auth-section {
-  background-color: #1a1a1a;
-  padding: 2rem;
-  border-radius: 12px;
   text-align: center;
 }
 
+/* ===== BOTÓN PRINCIPAL ===== */
+#showAuthPanel {
+  background: linear-gradient(45deg, #f8b500, #ff8c00);
+  color: #000;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#showAuthPanel:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(248, 181, 0, 0.8);
+}
+
+/* ===== PANEL EMERGENTE ===== */
+.auth-section {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #1a1a1a;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  z-index: 1000;
+  box-shadow: 0 0 20px rgba(248, 181, 0, 0.4);
+  animation: fadeIn 0.3s ease;
+}
+
 .auth-section h2 {
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   margin-bottom: 1rem;
+  color: #f8b500;
 }
 
-.auth-section form {
-  margin-bottom: 2rem;
-}
-
+/* Inputs */
 .auth-section input {
   width: 100%;
   padding: 0.7rem;
@@ -42,19 +71,52 @@ body {
   border-radius: 6px;
   background-color: #222;
   color: #fff;
+  outline: none;
 }
 
+.auth-section input:focus {
+  box-shadow: 0 0 8px #f8b500;
+}
+
+/* Botones */
 .auth-section button {
-  background-color: #f8b500;
+  background: linear-gradient(45deg, #f8b500, #ff8c00);
   color: #000;
   padding: 0.7rem 1.2rem;
   border: none;
   border-radius: 6px;
   font-weight: bold;
   cursor: pointer;
+  margin-top: 0.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.auth-section button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(248, 181, 0, 0.7);
+}
+
+/* Mensajes */
 .auth-section p {
   margin-top: 0.5rem;
   color: #f8b500;
 }
+
+/* Botón cerrar */
+#closeAuthPanel {
+  background: #ff4d4d;
+  color: #fff;
+  margin-top: 1rem;
+}
+
+#closeAuthPanel:hover {
+  background: #e60000;
+  box-shadow: 0 0 10px rgba(255, 77, 77, 0.8);
+}
+
+/* Animación aparición */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, -45%); }
+  to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
