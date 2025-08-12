@@ -1,76 +1,80 @@
-// ============================
-// LOGIN
-// ============================
-const loginForm = document.getElementById("loginForm");
-if (loginForm) {
-  loginForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const username = document.getElementById("username").value.trim();
-    const password = document.getElementById("password").value.trim();
+// Inicializar Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyDQv_NLKcXX91FJWnJ2iAMSfaAOB9LPZsc",
+  authDomain: "honeyq-26edf.firebaseapp.com",
+  projectId: "honeyq-26edf",
+  storageBucket: "honeyq-26edf.appspot.com",
+  messagingSenderId: "582100400487",
+  appId: "1:582100400487:web:bcc5d3df0570b98b9097c2"
+};
 
-    if (username && password) {
-      localStorage.setItem("user", username);
-      window.location.href = "principal.html";
-    } else {
-      alert("Por favor, completa todos los campos.");
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+// Registro
+const registerForm = document.getElementById("registerForm");
+if (registerForm) {
+  registerForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const email = document.getElementById("regEmail").value.trim();
+    const password = document.getElementById("regPassword").value.trim();
+
+    try {
+      const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+      const user = userCredential.user;
+      await db.collection("users").doc(user.uid).set({ email });
+      alert("Usuario registrado con éxito");
+    } catch (error) {
+      alert("Error al registrar: " + error.message);
     }
   });
 }
 
-// ============================
-// PROTECCIÓN DE PÁGINA PRINCIPAL
-// ============================
-if (window.location.pathname.includes("principal.html")) {
-  const user = localStorage.getItem("user");
-  if (!user) {
-    window.location.href = "index.html";
-  }
+// Inicio de sesión
+const loginForm = document.getElementById("loginForm");
+if (loginForm) {
+  loginForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const email = document.getElementById("loginEmail").value.trim();
+    const password = document.getElementById("loginPassword").value.trim();
 
-  // Mostrar el nombre del usuario en la interfaz
-  const userDisplay = document.getElementById("userDisplay");
-  if (userDisplay) {
-    userDisplay.textContent = user;
+    try {
+      const userCredential = await auth.signInWithEmailAndPassword(email, password);
+      const user = userCredential.user;
+
+      // Guardar sesión en localStorage
+      localStorage.setItem("user", JSON.stringify({
+        uid: user.uid,
+        email: user.email
+      }));
+
+      // Redirigir a página principal
+      window.location.href = "principal.html";
+    } catch (error) {
+      alert("Error al iniciar sesión: " + error.message);
+    }
+  });
+}
+
+// Protección de página principal
+if (window.location.pathname.includes("principal.html")) {
+  const session = localStorage.getItem("user");
+  if (!session) {
+    window.location.href = "index.html";
+  } else {
+    const user = JSON.parse(session);
+    const userDisplay = document.getElementById("userDisplay");
+    if (userDisplay) userDisplay.textContent = user.email;
   }
 }
 
-// ============================
-// CERRAR SESIÓN
-// ============================
+// Cerrar sesión
 const logoutBtn = document.getElementById("logoutBtn");
 if (logoutBtn) {
   logoutBtn.addEventListener("click", () => {
+    auth.signOut();
     localStorage.removeItem("user");
     window.location.href = "index.html";
   });
-}
-
-// ============================
-// SISTEMA DE CHAT LOCAL
-// ============================
-const chatForm = document.getElementById("chatForm");
-const chatBox = document.getElementById("chatBox");
-
-if (chatForm) {
-  chatForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const messageInput = document.getElementById("messageInput");
-    const message = messageInput.value.trim();
-    if (!message) return;
-
-    addMessage("Tú", message);
-    messageInput.value = "";
-
-    // Respuesta automática simulada
-    setTimeout(() => {
-      addMessage("Personaje IA", "¡Hola! Esta es una respuesta de ejemplo. Aquí luego irá la conexión con OpenRouter.");
-    }, 1000);
-  });
-}
-
-function addMessage(sender, text) {
-  const msg = document.createElement("div");
-  msg.classList.add("message");
-  msg.innerHTML = `<strong>${sender}:</strong> ${text}`;
-  chatBox.appendChild(msg);
-  chatBox.scrollTop = chatBox.scrollHeight;
 }
