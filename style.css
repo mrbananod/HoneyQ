@@ -1,122 +1,95 @@
-/* ===== RESET Y BASE ===== */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background-color: #0d0d0d; /* Fondo principal oscuro */
+  background-color: #0d0d0d;
   color: #fff;
 }
 
-/* Contenedor centrado */
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+/* Botón de menú */
+.menu-btn {
+  font-size: 1.8rem;
+  cursor: pointer;
+  padding: 10px;
+  background: #1a1a1a;
+  color: #f8b500;
+  border-radius: 6px;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 1100;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px; /* Oculto inicialmente */
+  width: 250px;
+  height: 100%;
+  background-color: #0d0d0d;
+  color: white;
+  padding: 20px;
+  transition: left 0.3s ease;
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+.sidebar.active {
+  left: 0; /* Visible */
+}
+
+.sidebar .logo {
+  font-size: 1.4rem;
+  color: #f8b500;
+  margin-bottom: 1rem;
+}
+
+.sidebar h3 {
+  color: #f8b500;
+  margin-top: 1.5rem;
+  font-size: 1rem;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin: 10px 0;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: white;
+  padding: 8px;
+  display: block;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.sidebar ul li a:hover {
+  background: rgba(248, 181, 0, 0.2);
+}
+
+/* Botón cerrar sesión */
+.logout-btn {
+  width: 100%;
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background: #e60000;
 }
 
 /* Contenido principal */
-.main-content {
-  width: 100%;
-  max-width: 500px;
-  padding: 2rem;
-  text-align: center;
+.content {
+  margin-left: 20px;
+  padding: 20px;
 }
-
-/* ===== BOTÓN PRINCIPAL ===== */
-#showAuthPanel {
-  background: linear-gradient(45deg, #f8b500, #ff8c00);
-  color: #000;
-  padding: 0.8rem 1.5rem;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-#showAuthPanel:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(248, 181, 0, 0.8);
-}
-
-/* ===== PANEL EMERGENTE ===== */
-.auth-section {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #1a1a1a;
-  padding: 2rem;
-  border-radius: 12px;
-  width: 90%;
-  max-width: 400px;
-  text-align: center;
-  z-index: 1000;
-  box-shadow: 0 0 20px rgba(248, 181, 0, 0.4);
-  animation: fadeIn 0.3s ease;
-}
-
-.auth-section h2 {
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
-  color: #f8b500;
-}
-
-/* Inputs */
-.auth-section input {
-  width: 100%;
-  padding: 0.7rem;
-  margin-bottom: 1rem;
-  border: none;
-  border-radius: 6px;
-  background-color: #222;
-  color: #fff;
-  outline: none;
-}
-
-.auth-section input:focus {
-  box-shadow: 0 0 8px #f8b500;
-}
-
-/* Botones */
-.auth-section button {
-  background: linear-gradient(45deg, #f8b500, #ff8c00);
-  color: #000;
-  padding: 0.7rem 1.2rem;
-  border: none;
-  border-radius: 6px;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 0.5rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.auth-section button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 12px rgba(248, 181, 0, 0.7);
-}
-
-/* Mensajes */
-.auth-section p {
-  margin-top: 0.5rem;
-  color: #f8b500;
-}
-
-/* Botón cerrar */
-#closeAuthPanel {
-  background: #ff4d4d;
-  color: #fff;
-  margin-top: 1rem;
-}
-
-#closeAuthPanel:hover {
-  background: #e60000;
-  box-shadow: 0 0 10px rgba(255, 77, 77, 0.8);
-}
-
-/* Animación aparición */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translate(-50%, -45%); }
-  to { opacity: 1; transform: translate(-50%, -50%); }
-}
-
